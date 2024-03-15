@@ -2,19 +2,26 @@ const express=require('express');
 
 const userController=require('../Controllers/userController')
 const cartController=require('../Controllers/cartController')
+const orderController=require('../Controllers/orderController')
 const jwtMiddleware=require('../Middlewares/jwtMiddleware')
 const multerConfig=require('../Middlewares/multerMiddleware')
+
 
 const router=new express.Router();
 
 
 //Register API routes-localhost-4000/register
 
-router.post('/register',userController.register)
+router.post('/admin/register',userController.register)
+
 
 //Register API routes-localhost-4000/login
 
-router.post('/login',userController.login)
+router.post('/admin/login',userController.login)
+router.post('/user/register',userController.userregister)
+
+router.post('/user/login',userController.userlogin)
+
 
 //add user product api routes-localhost:4000/product/add
 
@@ -36,6 +43,14 @@ router.put('/product/update-product/:id',jwtMiddleware,multerConfig.single('cart
 
 //delete user product api routes-localhost:4000/product/delete-product/563665765774
 router.delete('/product/delete-product/:pid',jwtMiddleware,cartController.deleteProduct)
+router.post('/profile/add',jwtMiddleware,orderController.addOrders)
+router.put('/profile/update/:id',jwtMiddleware,orderController.editOrders)
+router.get('/profile/all-user-profiles',jwtMiddleware,orderController.getUserProfile)
+router.get('/profile/all-profiles',jwtMiddleware,orderController.getAllProfiles)
+router.delete('/profile/delete-profile/:psid',jwtMiddleware,orderController.deleteProfile)
+
+
+
 
 
 module.exports=router

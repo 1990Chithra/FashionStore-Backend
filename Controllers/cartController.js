@@ -67,7 +67,7 @@ exports.getAllProducts=async(req,res)=>{
 //get all home products
 exports.getHomeProduct=async(req,res)=>{
     try{
-        const HomeProduct=await carts.find().limit(4)
+        const HomeProduct=await carts.find().limit(6)
         res.status(200).json(HomeProduct)
 
     }

@@ -13,6 +13,9 @@ const userSchema=new mongoose.Schema({
         type:String,
         required:true
     },
+    name:{
+        type:String,
+    },
     address:{
         type:String,
     },
@@ -20,6 +23,9 @@ const userSchema=new mongoose.Schema({
         type:String,
     },
     phonenumber:{
+        type:String,
+    },
+    reviews:{
         type:String,
     },
     brand:{
@@ -38,6 +44,15 @@ const userSchema=new mongoose.Schema({
         type:String,
     },
     description:{
+        type:String,
+    },
+    address:{
+        type:String,
+    },
+    pincode:{
+        type:String,
+    },
+    phonenumber:{
         type:String,
     }
 })
